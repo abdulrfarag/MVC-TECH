@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Timesheet, User } = require('../models');
+const { Techblog, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-      // Get all timesheets and JOIN with user data
-      const timesheetData = await Timesheet.findAll({
+      // Get all techblogs and JOIN with user data
+      const techblogData = await Techblog.findAll({
         include: [
           {
             model: User,
@@ -16,11 +16,11 @@ router.get('/', async (req, res) => {
 
 
     // Serialize data so the template can read it
-    const timesheets = timesheetData.map((timesheet) => timesheet.get({ plain: true }));
+    const techblogs = techblogData.map((techblog) => techblog.get({ plain: true }));
 
     // Pass serialized data and session flag into template
     res.render('homepage', { 
-        timesheets, 
+        techblogs, 
         logged_in: req.session.logged_in 
       });
     } catch (err) {
@@ -28,9 +28,9 @@ router.get('/', async (req, res) => {
     }
   });
 
-  router.get('/timesheet/:id', async (req, res) => {
+  router.get('/techblog/:id', async (req, res) => {
     try {
-      const timesheetData = await Timesheet.findByPk(req.params.id, {
+      const techblogData = await Techblog.findByPk(req.params.id, {
         include: [
           {
             model: User,
@@ -39,10 +39,10 @@ router.get('/', async (req, res) => {
         ],
       });
 
-      const timesheet = timesheetData.get({ plain: true });
+      const techblog = techblogData.get({ plain: true });
 
-    res.render('timesheet', {
-      ...timesheet,
+    res.render('techblog', {
+      ...techblog,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -56,7 +56,7 @@ router.get('/profile', withAuth, async (req, res) => {
       // Find the logged in user based on the session ID
       const userData = await User.findByPk(req.session.user_id, {
         attributes: { exclude: ['password'] },
-        include: [{ model: Timesheet }],
+        include: [{ model: Techblog }],
       });
 
       const user = userData.get({ plain: true });

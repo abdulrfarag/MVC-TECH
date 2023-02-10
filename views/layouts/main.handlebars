@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add Your Work Log!</title>
+  <title>The Tech Blog!</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
@@ -14,19 +14,21 @@
       <h1>
         <span role="img" aria-label="work">🧑‍💼</span>
         {{#if logged_in}}
-        <h>Task Log</h> |
-        <button class="no-button" id="logout">logout</button>
+        <h>The Tech Blog</h> |
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
       </h1>
+      <h1><button id="Home"> Home  </button></h1>
+      <h1><button id="Home"> Dashboard  </button></h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">profile</a>
        
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>

@@ -1,7 +1,7 @@
 <div class="text-center">
   <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{task}}</p>
+  {{!-- <p>{{{get_emoji}}}</p> --}}
+  <p>{{content}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
   <p>
     <span for="img" aria-label="time">⏱️ </span>
@@ -10,10 +10,10 @@
   </p>
   <p>
     {{#if logged_in}}
-        <a href="/profile">Add More Task</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/profile">Add another Blog</a> |
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
   </p>
 </div>

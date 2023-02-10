@@ -1,23 +1,23 @@
 <!-- Loop over each object in the projects array -->
-{{#each timesheets as |timesheet| }}
+{{#each techblogs as |techblog| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>
       <!-- Call helper function with triple brackets to render the emoji span as HTML -->
       {{{get_emoji}}}
-      <a href="/project/{{timesheet.id}}">{{timesheet.name}}</a>
+      <a href="/project/{{techblog.id}}">{{techblog.name}}</a>
     </h2>
     <p>
       <span for="img" aria-label="work">🧑‍💼</span>
       <!-- Pass needed_funding value to the helper function -->
-      <span class="work-hours">{{format_amount timesheet.hours}}</span>
-      Hours!
+      <span class="work-hours">{{format_amount techblog.hours}}</span>
+      Age!
     </p>
-    <p>Created by {{timesheet.user.name}} on {{format_date timesheet.date_created}}</p>
+    <p>Created by {{techblog.user.name}} on {{format_date techblog.date_created}}</p>
   </div>
   <div class="col-md-7">
     <p>
-      {{timesheet.task}}
+      {{techblog.content}}
     </p>
   </div>
 </div>

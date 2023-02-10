@@ -1,15 +1,15 @@
 const router = require('express').Router();
-const { Timesheet } = require('../../models')
+const { Techblog } = require('../../models')
 const withAuth = require('../../utils/auth');
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newTimesheet = await Timesheet.create({
+    const newTechblog = await Techblog.create({
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newTimesheet);
+    res.status(200).json(newTechblog);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -17,19 +17,19 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const timesheetData = await Timesheet.destroy({
+    const techblogData = await Techblog.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     });
 
-    if (!timesheetData) {
-      res.status(404).json({ message: 'No timesheet found with this id!' });
+    if (!techblogData) {
+      res.status(404).json({ message: 'No techblog found with this id!' });
       return;
     }
 
-    res.status(200).json(timesheetData);
+    res.status(200).json(techblogData);
   } catch (err) {
     res.status(500).json(err);
   }

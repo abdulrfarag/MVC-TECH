@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Timesheet extends Model {}
+class Techblog extends Model {}
 
-Timesheet.init(
+Techblog.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -15,7 +15,7 @@ Timesheet.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    task: {
+    content: {
       type: DataTypes.STRING,
     },
     date_created: {
@@ -25,7 +25,7 @@ Timesheet.init(
     },
     hours: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -43,7 +43,7 @@ Timesheet.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'timesheet',
+    modelName: 'techblog',
   }
 );
-module.exports = Timesheet;
+module.exports = Techblog;
